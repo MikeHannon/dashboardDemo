@@ -10,19 +10,19 @@ var UserSchema = new Schema({
 });
 
 var TopicSchema = new Schema({
-	topic_name: {type: String, required: true, minlength: 2},
-	topic_description: { type: String, required:true, minlength:2 },
+	title: {type: String, required: true, minlength: 2},
+	description: { type: String, required:true, minlength:2 },
 	created_at: { type: Date, default: Date() },
-	_topic_category: { type: Schema.Types.ObjectId, ref: 'Category'},
+	_category: { type: Schema.Types.ObjectId, ref: 'Category'},
 	_posted_on: [{type: Schema.Types.ObjectId, ref: 'Post'}],
-	_topic_user: {type: Schema.Types.ObjectId, ref: 'User'},
+	_user: {type: Schema.Types.ObjectId, ref: 'User'},
 })
 
 var PostSchema = new Schema({
 	post_content: { type: String, required:true, minlength:2 },
 	counts: {
 		likes: {type: Number, default: 0},
-		dislikes: {type: Number, default: 0} 
+		dislikes: {type: Number, default: 0}
 	},
 	created_at: { type: Date, default: Date() },
 	_topic: {type: Schema.Types.ObjectId, ref: 'Topic'},

@@ -24,7 +24,28 @@ module.exports = (function(){
 			res.json({type: 'show'})
 		},
 		update: function(req, res){
-			res.json({type: 'update'})
+			console.log(req.params.id);
+			console.log(req.body);
+			User.findOne({_id:req.params.id},function(err,resulting_user){
+				if (!err){
+					for (var key in req.body){
+					resulting_user[key].push(req.body[key]);
+				}
+					resulting_user.save(function(err,user){
+						if (err){
+							// save error
+							res.json(err);
+						}
+						else{
+							res.json(user);
+						}
+					});
+				}
+				else{
+					// findone error
+					res.json(err);
+				}
+			})
 		},
 		delete: function(req, res){
 			res.json({type: 'delete'})

@@ -10,4 +10,12 @@ myApp.config(function($routeProvider){
 		templateUrl: '/static/views/partials/topics_index.html',
 		controller: 'TopicsController as TopicsCtrl'
 	})
+	.when('/topics/:id', {
+		templateUrl: '/static/views/partials/topics_show.html',
+		controller: 'TopicsController as TopicsCtrl'
+	})
+	.when('/users/:id', {
+		templateUrl: '/static/views/partials/users_show.html',
+		controller: 'UsersController as UsersCtrl'
+	})
 })

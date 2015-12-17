@@ -1,5 +1,6 @@
-myApp.controller('UsersController', function(UserFactory, $location){
+myApp.controller('UsersController', function(UserFactory, $location, $routeParams){
 	var _this = this;
+	console.log($routeParams);
 	this.create = function(){
 		this.errors = '';
 		UserFactory.createUser(this.usersInfo, function(data){

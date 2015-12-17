@@ -10,6 +10,11 @@ myApp.factory('UserFactory', function($http){
 	factory.getCurrentUser = function(callback){
 		callback(user);
 	}
+	factory.update = function (info, user_id){
+		$http.patch('/users/'+user_id, info).success(function(data){
+			console.log(data);
+		});
+	}
 
 	return factory;
 })

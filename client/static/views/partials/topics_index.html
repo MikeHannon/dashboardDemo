@@ -10,18 +10,18 @@ Search: <input type = 'text' ng-model='colins_filter'>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+		<tr ng-repeat = 'topic in TopicsCtrl.topics'>
+			<td>{{topic._category.name}}</td>
+			<td><a ng-href = '#/topics/{{topic._id}}'>{{topic.title}}</a></td>
+			<td><a ng-href = '#/users/{{topic._user._id}}'>{{topic._user.name}}</a></td>
+			<td>{{topic._posted_on.length}}</td>
 		</tr>
 	</tbody>
 </table>
-<form>
+<form >
 	Topic:<input type = 'text' ng-model = 'TopicsCtrl.newTopic.title'>
 	Description:<input type = 'text' ng-model = 'TopicsCtrl.newTopic.description'>
-	Category:<select ng-options= 'category.name for category in TopicsCtrl.categories' ng-model='TopicsCtrl.newTopic.category'>
+	Category:<select ng-options= 'category.name for category in TopicsCtrl.categories' ng-model='TopicsCtrl.newTopic._category'>
 	</select>
 	<button ng-click = 'TopicsCtrl.createTopic()'>Add</button>
 </form>
